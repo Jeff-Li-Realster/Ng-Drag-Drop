@@ -25,6 +25,7 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
       '@angular/upgrade/static': 'npm:@angular/upgrade/bundles/upgrade-static.umd.js',
+      'ng2-dnd': 'node_modules/ng2-dnd',
 
       // other libraries
       'rxjs':                      'npm:rxjs',
@@ -33,7 +34,11 @@
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
       app: {
-        main: './main.js',
+        main: '../js/app/main.js',
+        defaultExtension: 'js'
+      },
+      'ng2-dnd': {
+        main: './index.js',
         defaultExtension: 'js'
       },
       rxjs: {
