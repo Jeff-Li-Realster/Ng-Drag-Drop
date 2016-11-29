@@ -8,19 +8,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var DragReorderComponent = (function () {
-    function DragReorderComponent() {
-        this.listOne = ['Coffee', 'Orange Juice', 'Red Wine', 'Unhealty drink!', 'Water'];
+var core_1 = require("@angular/core");
+require('jquery');
+var DragDropButtonComponent = (function () {
+    function DragDropButtonComponent() {
     }
-    DragReorderComponent = __decorate([
+    DragDropButtonComponent = __decorate([
         core_1.Component({
-            selector: 'drag-reorder',
-            templateUrl: '../app/drag-reorder/drag-reorder.component.html'
+            selector: 'app',
+            templateUrl: "../app/drag-drop-button/drag-drop-button.component.html"
         }), 
         __metadata('design:paramtypes', [])
-    ], DragReorderComponent);
-    return DragReorderComponent;
+    ], DragDropButtonComponent);
+    return DragDropButtonComponent;
 }());
-exports.DragReorderComponent = DragReorderComponent;
-//# sourceMappingURL=drag-reorder.component.js.map
+exports.DragDropButtonComponent = DragDropButtonComponent;
+//# sourceMappingURL=drag-drop-button.component.js.map

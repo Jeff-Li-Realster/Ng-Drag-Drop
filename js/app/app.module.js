@@ -11,6 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var ng2_dnd_1 = require('ng2-dnd');
+var drag_reorder_component_1 = require("./drag-reorder/drag-reorder.component");
+var drag_drop_component_1 = require("./drag-drop/drag-drop.component");
+var drag_drop_button_component_1 = require("./drag-drop-button/drag-drop-button.component");
+var app_routing_module_1 = require("./app-routing.module");
 var app_component_1 = require('./app.component');
 var AppModule = (function () {
     function AppModule() {
@@ -19,9 +23,15 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
-                ng2_dnd_1.DndModule.forRoot()
+                app_routing_module_1.AppRoutingModule,
+                ng2_dnd_1.DndModule.forRoot(),
             ],
-            declarations: [app_component_1.AppComponent],
+            declarations: [
+                app_component_1.AppComponent,
+                drag_drop_component_1.DragDropComponent,
+                drag_reorder_component_1.DragReorderComponent,
+                drag_drop_button_component_1.DragDropButtonComponent,
+            ],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

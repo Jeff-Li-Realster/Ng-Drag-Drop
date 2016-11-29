@@ -25,7 +25,10 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
       '@angular/upgrade/static': 'npm:@angular/upgrade/bundles/upgrade-static.umd.js',
-      'ng2-dnd': 'node_modules/ng2-dnd',
+      'ng2-dnd': 'npm:ng2-dnd',
+      'jquery': 'npm:jquery',
+      'bootstrap': 'npm:bootstrap',
+      // 'jquery-ui': 'npm:jquery-ui',
 
       // other libraries
       'rxjs':                      'npm:rxjs',
@@ -43,7 +46,19 @@
       },
       rxjs: {
         defaultExtension: 'js'
-      }
+      },
+      jquery: {
+        main: './dist/jquery.js',
+        defaultExtension: 'js'
+      },
+      bootstrap: {
+        main: './dist/bootstrap.js',
+        defaultExtension: 'js'
+      },
+      // jquery-ui: {
+      //   main: './build/release.js',
+      //   defaultExtension: 'js'
+      // }
     }
   });
 })(this);

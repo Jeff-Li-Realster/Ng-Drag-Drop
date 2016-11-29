@@ -8,19 +8,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+// import { bootstrap } from '@angular/platform-browser-dynamic';
 var core_1 = require('@angular/core');
-var DragReorderComponent = (function () {
-    function DragReorderComponent() {
-        this.listOne = ['Coffee', 'Orange Juice', 'Red Wine', 'Unhealty drink!', 'Water'];
+require('jquery');
+var DragDropComponent = (function () {
+    function DragDropComponent() {
+        this.transferData = { id: 1, msg: 'Drag me!' };
+        this.receivedData = [];
     }
-    DragReorderComponent = __decorate([
+    DragDropComponent.prototype.transferDataSuccess = function ($event) {
+        this.receivedData.push($event.dragData.msg);
+    };
+    DragDropComponent = __decorate([
         core_1.Component({
-            selector: 'drag-reorder',
-            templateUrl: '../app/drag-reorder/drag-reorder.component.html'
+            selector: 'app',
+            templateUrl: "../app/drag-drop/drag-drop.component.html"
         }), 
         __metadata('design:paramtypes', [])
-    ], DragReorderComponent);
-    return DragReorderComponent;
+    ], DragDropComponent);
+    return DragDropComponent;
 }());
-exports.DragReorderComponent = DragReorderComponent;
-//# sourceMappingURL=drag-reorder.component.js.map
+exports.DragDropComponent = DragDropComponent;
+//# sourceMappingURL=drag-drop.component.js.map

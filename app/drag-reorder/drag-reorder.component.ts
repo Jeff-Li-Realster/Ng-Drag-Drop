@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'drag-drop',
+  selector: 'drag-reorder',
   templateUrl: '../app/drag-reorder/drag-reorder.component.html'
 })
 export class DragReorderComponent {

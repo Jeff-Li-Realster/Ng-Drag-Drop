@@ -12,9 +12,11 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var drag_reorder_component_1 = require("./drag-reorder/drag-reorder.component");
 var drag_drop_component_1 = require("./drag-drop/drag-drop.component");
+var drag_drop_button_component_1 = require("./drag-drop-button/drag-drop-button.component");
 var routes = [
     { component: drag_reorder_component_1.DragReorderComponent, path: "drag-reorder" },
-    { component: drag_drop_component_1.DragDropComponent, path: "drag-drop" },
+    { component: drag_drop_component_1.DragDropComponent, path: "drag-drop-sorted" },
+    { component: drag_drop_button_component_1.DragDropButtonComponent, path: "drag-drop-button" },
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
