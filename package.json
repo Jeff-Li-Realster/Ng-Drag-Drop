@@ -26,7 +26,9 @@
     "@angular/platform-browser-dynamic": "~2.2.0",
     "@angular/router": "~3.2.0",
     "angular-in-memory-web-api": "~0.1.15",
+    "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
+    "interact.js": "^1.2.6",
     "jquery": "^3.1.1",
     "jquery-ui": "^1.12.1",
     "ng2-dnd": "^2.0.1",
@@ -36,9 +38,10 @@
     "zone.js": "^0.6.26"
   },
   "devDependencies": {
+    "@types/interact.js": "^1.0.20",
     "@types/jasmine": "^2.5.36",
     "@types/jquery": "^2.0.34",
-    "@types/node": "^6.0.46",
+    "@types/node": "^6.0.51",
     "@types/selenium-webdriver": "^2.53.33",
     "canonical-path": "0.0.2",
     "concurrently": "^3.1.0",

@@ -22,7 +22,7 @@ var DragDropComponent = (function () {
     DragDropComponent = __decorate([
         core_1.Component({
             selector: 'app',
-            templateUrl: "../app/drag-drop/drag-drop.component.html"
+            templateUrl: "../app/drag-drop/drag-drop.component.html",
         }), 
         __metadata('design:paramtypes', [])
     ], DragDropComponent);

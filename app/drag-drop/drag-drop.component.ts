@@ -4,7 +4,7 @@ import 'jquery';
 
 @Component({
     selector: 'app',
-    templateUrl: "../app/drag-drop/drag-drop.component.html"
+    templateUrl: "../app/drag-drop/drag-drop.component.html",
 })
 
 export class DragDropComponent {
@@ -12,7 +12,7 @@ export class DragDropComponent {
     transferData: Object = {id: 1, msg: 'Drag me!'};
     receivedData: Array<any> = [];
 
-    transferDataSuccess($event) {
+    transferDataSuccess($event: any) {
         this.receivedData.push($event.dragData.msg);
     }
  }

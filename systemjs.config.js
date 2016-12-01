@@ -27,6 +27,7 @@
       '@angular/upgrade/static': 'npm:@angular/upgrade/bundles/upgrade-static.umd.js',
       'ng2-dnd': 'npm:ng2-dnd',
       'jquery': 'npm:jquery',
+      'interact.js': 'npm:interact.js',
       'bootstrap': 'npm:bootstrap',
       // 'jquery-ui': 'npm:jquery-ui',
 
@@ -51,10 +52,14 @@
         main: './dist/jquery.js',
         defaultExtension: 'js'
       },
-      bootstrap: {
-        main: './dist/bootstrap.js',
+      'interact.js': {
+        main: './dist/interact.js',
         defaultExtension: 'js'
       },
+      'bootstrap': {
+        main: './dist/bootstrap',
+        defaultExtension: 'js'
+      }
       // jquery-ui: {
       //   main: './build/release.js',
       //   defaultExtension: 'js'
