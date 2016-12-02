@@ -1,4 +1,4 @@
-#drag-1, #drag-2, .draggable-copy {
+#drag-1, .draggable-copy {
   /*width: 150px;
   height: 200px;;
   min-height: 6.5em;*/
@@ -8,7 +8,7 @@
   top: 0px;
   left: 0px;
   position: absolute;
-
+  z-index: 1;
   border-radius: 0.75em;
 
   -webkit-transform: translate(0px, 0px);
@@ -28,12 +28,16 @@
   margin-top: 50px;
 }
 
-.draggable-copy {
-  position: absolute;
+.frame {
+  height: 800px;
+  width: 600px;
+  background-color: orange;
+  margin-bottom: 50px;
+  z-index: 0;
 }
 
-.frame {
-  height: 1200px;
-  width: 800px;
-  background-color: orange;
+.scroll-bar {
+  width: 600px;
+  height: 1000px;
+  overflow: scroll;
 }

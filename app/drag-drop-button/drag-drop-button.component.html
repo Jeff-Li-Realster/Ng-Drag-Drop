@@ -1,9 +1,14 @@
-<div class="col-md-3">
-    <div id="drag-0">
-        <button id="drag-1" class="draggable">Drag me</button>
+<div class="row">
+    <div class="col-md-3">
+        <div id="drag-0">
+            <button id="drag-1" class="draggable">Drag me</button>
+        </div>
+        <div id="label">
+            <p id="position"> Position </p>
+        </div>
     </div>
-    <div id="label"> <p id="position"> Position </p> </div>
-    <div id="text">123</div>
-</div>
-<div class="col-md-offset-3 frame">
+    <div class="col-md-3 scroll-bar">
+        <div class="frame" *ngFor="let page of Docs" [attr.id]="'page' + Docs.indexOf(page)">
+        </div>
+    </div>
 </div>

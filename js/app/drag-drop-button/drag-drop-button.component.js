@@ -10,68 +10,76 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var interact = require('interact.js');
-//import * as $ from 'jquery';
 var DragDropButtonComponent = (function () {
     function DragDropButtonComponent() {
+        this.Docs = [
+            { page: 1 },
+            { page: 2 },
+            { page: 3 },
+        ];
     }
     DragDropButtonComponent.prototype.ngOnInit = function () {
-        // target elements with the "draggable" class
         interact('.draggable')
             .draggable({ manualStart: true })
             .on('move', function (event) {
             var interaction = event.interaction;
-            // if the pointer was moved while being held down
-            // and an interaction hasn't started yet
             if (interaction.pointerIsDown && !interaction.interacting()) {
-                // create a clone of the currentTarget element
                 var clone = document.querySelector('#drag-1').cloneNode(true);
                 clone.attributes.removeNamedItem('class');
                 var typ = document.createAttribute('class');
                 typ.value = 'draggable-copy';
                 clone.attributes.setNamedItem(typ);
-                // insert the clone to the page
-                // TODO: position the clone appropriately
-                document.querySelector('#drag-0').appendChild(clone);
-                document.querySelector('#position').textContent = "Moving";
-                var node = document.querySelector('#text');
-                // start a drag interaction targeting the clone
-                interaction.start({ name: 'drag' }, event.interactable, node);
+                var hiddenScroll = document.querySelector('.scroll-bar').scrollTop;
+                var frame = document.querySelector('.frame');
+                var style = window.getComputedStyle(frame);
+                var pageHeight = style.getPropertyValue('height');
+                var pageIndex = hiddenScroll / parseInt(pageHeight, 0);
+                pageIndex = Math.floor(pageIndex);
+                document.querySelector('#page' + Math.floor(pageIndex)).appendChild(clone);
+                interaction.start({ name: 'drag' }, event.interactable, clone);
             }
         });
-        interact('.draggable-copy').draggable({
-            // enable inertial throwing
+        interact('.draggable').draggable({
             inertia: true,
-            // keep the element within the area of it's parent
             restrict: {
                 // restriction: document.querySelector('.frame'),
                 endOnly: true,
                 elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
             },
-            // enable autoScroll
             autoScroll: true,
-            // OnInit: function (event: any) {
-            //     let target = event.target;
-            //     target.setAttribute('data-x', 0);
-            //     target.setAttribute('data-y', 0);
-            // },
-            // call this function on every dragmove event
             onmove: dragMoveListener,
-            // call this function on every dragend event
             onend: function (event) {
                 var documentEl = document.querySelector('#position');
-                var textEl = event.target.querySelector('p');
                 var target = event.target;
                 var x = parseInt(target.getAttribute('data-x'), 0);
                 var y = parseInt(target.getAttribute('data-y'), 0);
                 documentEl.textContent = 'x: ' + x + 'px; y: ' + y + 'px;';
-                //Need to get the position of frame and replace 200 here
-                if (x <= 200) {
-                    target.remove();
-                }
-                // event.target.setAttribute('data-x', -250);
-                // event.target.setAttribute('data-y', 100);
-                // textEl && (textEl.textContent =
-                //     'x: ' + (event.dx|0) + "px; y: " + (event.dy|0) + "px;");
+                // let frameRect = document.querySelector('.frame').getBoundingClientRect();
+                // if (x < frameRect.left || x > frameRect.right && y < frameRect.top || y > frameRect.bottom) {
+                //     target.remove();
+                // }
+            }
+        });
+        interact('.draggable-copy').draggable({
+            inertia: true,
+            restrict: {
+                // restriction: document.querySelector('.frame'),
+                endOnly: true,
+                elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+            },
+            autoScroll: true,
+            onmove: dragMoveListener,
+            onend: function (event) {
+                var documentEl = document.querySelector('#position');
+                var target = event.target;
+                var x = parseInt(target.getAttribute('data-x'), 0);
+                var y = parseInt(target.getAttribute('data-y'), 0);
+                documentEl.textContent = 'x: ' + x + 'px; y: ' + y + 'px;';
+                var result = document.querySelector('.frame').getAttributeNode.length;
+                // let frameRect = document.querySelector('.frame').getBoundingClientRect();
+                // if (x < frameRect.left || x > frameRect.right && y < frameRect.top || y > frameRect.bottom) {
+                //     target.remove();
+                // }
             }
         });
         function dragMoveListener(event) {
