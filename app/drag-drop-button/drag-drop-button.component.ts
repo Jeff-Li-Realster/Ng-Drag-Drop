@@ -24,7 +24,6 @@ export class DragDropButtonComponent implements OnInit {
             .on('move', function (event: any) {
                 let interaction = event.interaction;
                 if (interaction.pointerIsDown && !interaction.interacting()) {
-
                     let clone = document.querySelector('#drag-1').cloneNode(true);
                     clone.attributes.removeNamedItem('class');
                     let typ = document.createAttribute('class');

@@ -1,0 +1,39 @@
+#drag-self, #drag-ghost {
+  background-color: #29e;
+  color: black;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  z-index: 1;
+  border-radius: 0.75em;
+
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+}
+
+#drag-me::before {
+  content: "#" attr(id);
+  font-weight: bold;
+}
+
+#drag-0 {
+  position: relative;
+}
+
+#label {
+  margin-top: 50px;
+}
+
+.frame {
+  height: 800px;
+  width: 600px;
+  background-color: orange;
+  margin-bottom: 50px;
+  z-index: 0;
+}
+
+.scroll-bar {
+  width: 600px;
+  height: 1000px;
+  overflow: scroll;
+}

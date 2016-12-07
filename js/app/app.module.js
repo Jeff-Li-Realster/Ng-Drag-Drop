@@ -14,6 +14,7 @@ var ng2_dnd_1 = require('ng2-dnd');
 var drag_reorder_component_1 = require("./drag-reorder/drag-reorder.component");
 var drag_drop_component_1 = require("./drag-drop/drag-drop.component");
 var drag_drop_button_component_1 = require("./drag-drop-button/drag-drop-button.component");
+var drag_drop_ghost_component_1 = require('./drag-drop-ghost/drag-drop-ghost.component');
 var app_routing_module_1 = require("./app-routing.module");
 var app_component_1 = require('./app.component');
 var AppModule = (function () {
@@ -31,6 +32,7 @@ var AppModule = (function () {
                 drag_drop_component_1.DragDropComponent,
                 drag_reorder_component_1.DragReorderComponent,
                 drag_drop_button_component_1.DragDropButtonComponent,
+                drag_drop_ghost_component_1.DragDropGhostComponent,
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 
