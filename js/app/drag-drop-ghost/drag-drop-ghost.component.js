@@ -68,11 +68,9 @@ var DragDropGhostComponent = (function () {
                 var frame = document.querySelector('.frame');
                 var style = window.getComputedStyle(frame);
                 var pageHeight = style.getPropertyValue('height');
-                console.log(y);
                 var pageIndex = y / parseInt(pageHeight + 50, 0);
                 pageIndex = Math.floor(pageIndex);
                 document.querySelector('#page' + Math.floor(pageIndex)).appendChild(clone);
-                console.log(pageIndex);
                 // replace data-x
                 var dx = document.createAttribute('data-x');
                 var new_x = x - left;

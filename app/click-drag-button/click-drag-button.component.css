@@ -3,11 +3,12 @@
   height: 200px;;
   min-height: 6.5em;*/
 
-  background-color: #29e;
+  background-color: dodgerblue;
   color: black;
   top: 0px;
   left: 0px;
   position: absolute;
+  min-height: 40px;
   z-index: 1;
   border-radius: 0.75em;
 
@@ -15,9 +16,26 @@
           transform: translate(0px, 0px);
 }
 
-#drag-me::before {
+.draggable-copy {
+  /*margin-top: 50%;
+  margin-left: 50%;*/
+  min-width: 80px;
+  min-height: 40px;
+  margin: 50%;
+}
+
+/*#drag-me::before {
   content: "#" attr(id);
   font-weight: bold;
+}*/
+
+#setting-button {
+  border-color: dodgerblue;
+  min-height: 100px;
+  min-height: 100px;
+  margin-left: 50%;
+  margin-right: 50%;
+  margin-top: 20px;
 }
 
 #drag-0 {

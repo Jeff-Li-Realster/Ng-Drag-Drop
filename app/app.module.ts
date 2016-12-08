@@ -4,7 +4,7 @@ import { DndModule } from 'ng2-dnd';
 
 import { DragReorderComponent } from "./drag-reorder/drag-reorder.component";
 import { DragDropComponent } from "./drag-drop/drag-drop.component";
-import { DragDropButtonComponent } from "./drag-drop-button/drag-drop-button.component";
+import { ClickDragButtonComponent } from "./click-drag-button/click-drag-button.component";
 import { DragDropGhostComponent } from './drag-drop-ghost/drag-drop-ghost.component';
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -20,7 +20,7 @@ import { AppComponent } from './app.component';
     AppComponent,
     DragDropComponent,
     DragReorderComponent,
-    DragDropButtonComponent,
+    ClickDragButtonComponent,
     DragDropGhostComponent,
     ],
   bootstrap: [AppComponent]

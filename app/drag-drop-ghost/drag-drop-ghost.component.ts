@@ -69,11 +69,9 @@ export class DragDropGhostComponent implements OnInit {
                 let frame = document.querySelector('.frame');
                 let style = window.getComputedStyle(frame);
                 let pageHeight = style.getPropertyValue('height');
-                console.log(y);
                 let pageIndex: number = y / parseInt(pageHeight + 50, 0);
                 pageIndex = Math.floor(pageIndex);
                 document.querySelector('#page' + Math.floor(pageIndex)).appendChild(clone);
-                console.log(pageIndex);
                 // replace data-x
                 let dx = document.createAttribute('data-x');
                 let new_x: number = x - left;
