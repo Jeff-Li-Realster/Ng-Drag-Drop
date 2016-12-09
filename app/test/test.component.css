@@ -1,0 +1,60 @@
+.button-default {
+  /*width: 150px;
+  height: 200px;;
+  min-height: 6.5em;*/
+
+  background-color: dodgerblue;
+  color: black;
+  top: 0px;
+  left: 0px;
+  min-width: 80px;
+  min-height: 40px;
+  z-index: 1;
+  border-radius: 0.75em;
+
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+}
+
+.draggable-copy {
+  margin: 50%;
+  position: absolute;
+  box-sizing: border-box;
+}
+
+.input-default {
+  position: absolute;
+  min-height: 40px;
+  min-width: 80px;
+}
+
+#setting-button {
+  border-color: dodgerblue;
+  min-height: 100px;
+  min-height: 100px;
+  margin-left: 50%;
+  margin-right: 50%;
+  margin-top: 20px;
+}
+
+#drag-0 {
+  position: relative;
+}
+
+#label {
+  margin-top: 50px;
+}
+
+.frame {
+  height: 800px;
+  width: 600px;
+  background-color: orange;
+  margin-bottom: 50px;
+  z-index: 0;
+}
+
+.scroll-bar {
+  width: 600px;
+  height: 1000px;
+  overflow: scroll;
+}

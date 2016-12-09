@@ -14,11 +14,13 @@ var drag_reorder_component_1 = require("./drag-reorder/drag-reorder.component");
 var drag_drop_component_1 = require("./drag-drop/drag-drop.component");
 var drag_drop_ghost_component_1 = require('./drag-drop-ghost/drag-drop-ghost.component');
 var click_drag_button_component_1 = require("./click-drag-button/click-drag-button.component");
+var test_component_1 = require("./test/test.component");
 var routes = [
     { component: drag_reorder_component_1.DragReorderComponent, path: 'drag-reorder' },
     { component: drag_drop_component_1.DragDropComponent, path: 'drag-drop-sorted' },
     { component: drag_drop_ghost_component_1.DragDropGhostComponent, path: 'drag-drop-ghost' },
     { component: click_drag_button_component_1.ClickDragButtonComponent, path: 'click-drag-button' },
+    { component: test_component_1.TestComponent, path: 'test' }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

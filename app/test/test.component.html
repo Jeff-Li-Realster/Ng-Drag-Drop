@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-md-3" id="catalog">
+        <div id="drag-0">
+            <button class="button-default"> New Button </button>
+            <button class="button-default"> New Input </button>
+        </div>
+        <div id="label">
+            <p id="position"> Position </p>
+        </div>
+        <div *ngIf="isButton">
+            <button class='button-delete'> Delete Button</button>
+        </div>
+        <div *ngIf="isInput">
+            <button class="input-delete"> Delete Input</button>
+        </div>
+    </div>
+    <div class="col-md-3 frame">
+        <button *ngFor="let bt of Buttons; let i = index" id="button{{i}}" class="button-default draggable-copy"> Drag me </button>
+        <input *ngFor="let ip of Inputs; let i = index" id="input{{i}}" class="input-default draggable-copy"/>
+    </div>
+</div>

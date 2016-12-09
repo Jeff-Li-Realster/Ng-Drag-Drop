@@ -15,6 +15,7 @@ var drag_reorder_component_1 = require("./drag-reorder/drag-reorder.component");
 var drag_drop_component_1 = require("./drag-drop/drag-drop.component");
 var click_drag_button_component_1 = require("./click-drag-button/click-drag-button.component");
 var drag_drop_ghost_component_1 = require('./drag-drop-ghost/drag-drop-ghost.component');
+var test_component_1 = require('./test/test.component');
 var app_routing_module_1 = require("./app-routing.module");
 var app_component_1 = require('./app.component');
 var AppModule = (function () {
@@ -33,6 +34,7 @@ var AppModule = (function () {
                 drag_reorder_component_1.DragReorderComponent,
                 click_drag_button_component_1.ClickDragButtonComponent,
                 drag_drop_ghost_component_1.DragDropGhostComponent,
+                test_component_1.TestComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

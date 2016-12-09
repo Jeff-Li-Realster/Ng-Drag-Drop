@@ -6,6 +6,7 @@ import { DragReorderComponent } from "./drag-reorder/drag-reorder.component";
 import { DragDropComponent } from "./drag-drop/drag-drop.component";
 import { ClickDragButtonComponent } from "./click-drag-button/click-drag-button.component";
 import { DragDropGhostComponent } from './drag-drop-ghost/drag-drop-ghost.component';
+import { TestComponent } from './test/test.component';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from './app.component';
@@ -22,6 +23,7 @@ import { AppComponent } from './app.component';
     DragReorderComponent,
     ClickDragButtonComponent,
     DragDropGhostComponent,
+    TestComponent
     ],
   bootstrap: [AppComponent]
 })
