@@ -18,18 +18,15 @@ export class TestComponent implements OnInit {
     }
 
     public ngOnInit() {
-
-        document.querySelector('#drag-0').childNodes[1].addEventListener('click', () => {
+        document.querySelector('#new-button').addEventListener('click', () => {
             this.Buttons.push(1);
             this.cdr.detectChanges();
         });
 
-        document.querySelector('#drag-0').childNodes[3].addEventListener('click', () => {
+        document.querySelector('#new-input').addEventListener('click', () => {
             this.Inputs.push(1);
             this.cdr.detectChanges();
         });
-
-        // console.log(document.querySelector('#drag-0').childNodes);
 
         interact('.draggable-copy')
             .draggable({
@@ -45,36 +42,9 @@ export class TestComponent implements OnInit {
                     let target = event.target;
                     let x = parseInt(target.getAttribute('data-x'), 0);
                     let y = parseInt(target.getAttribute('data-y'), 0);
-                    let i = target.getAttribute('id');
                     documentEl.textContent = 'x: ' + x + 'px; y: ' + y + 'px;';
-                    if (target.getAttribute('class').indexOf('button-default') > -1) {
-                        if (!document.querySelector('.button-delete')) {
-                            this.isButton = true;
-                            this.isInput = false;
-                            this.cdr.detectChanges();
-                            document.querySelector('.button-delete').addEventListener('click', (event) => {
-                                let id = event.srcElement.attributes.getNamedItem('id').value;
-                                let index = id.substring(id.length - 1, id.length);
-                                this.Buttons.splice(parseInt(index, 0), 1);
-                                this.cdr.detectChanges();
-                            });
-                        }
-                        updateButtonId(i);
-                    }
-                    if (target.getAttribute('class').indexOf('input-default') > -1) {
-                        if (!document.querySelector('.input-delete')) {
-                            this.isInput = true;
-                            this.isButton = false;
-                            this.cdr.detectChanges();
-                            document.querySelector('.input-delete').addEventListener('click', (event) => {
-                                let id = event.srcElement.attributes.getNamedItem('id').value;
-                                let index = id.substring(id.length - 1, id.length);
-                                this.Inputs.splice(parseInt(index, 0), 1);
-                                this.cdr.detectChanges();
-                            });
-                        }
-                        updateInputId(i);
-                    }
+                    let this_ = this;
+                    addDeleteButton(target, this_);
                 }
             })
             .resizable({
@@ -99,14 +69,75 @@ export class TestComponent implements OnInit {
 
                 target.setAttribute('data-x', x);
                 target.setAttribute('data-y', y);
+                let this_ = this;
+                addDeleteButton(target, this_);
+            })
+            .on('click', (event: any) => {
+                let target = event.target;
+                let this_ = this;
+                addDeleteButton(target, this_);
             });
 
-        function updateButtonId(i: string) {
-            document.querySelector('.button-delete').setAttribute('id', 'delete' + i);
+        function addDeleteButton(target: any, this_: any) {
+            let i = target.getAttribute('id');
+            let targetClass = target.getAttribute('class').split(' ')[0];
+            switch (targetClass) {
+                case 'button-default':
+                    if (!document.querySelector('.button-delete')) {
+                        this_.isButton = true;
+                        this_.isInput = false;
+                        this_.cdr.detectChanges();
+                        addClickListener('button', this_);
+                    }
+                    updateId('button', i);
+                    break;
+                case 'input-default':
+                    if (!document.querySelector('.input-delete')) {
+                        this_.isInput = true;
+                        this_.isButton = false;
+                        this_.cdr.detectChanges();
+                        addClickListener('input', this_);
+                    }
+                    updateId('input', i);
+                    break;
+                default: break;
+            }
         }
 
-        function updateInputId(i: string) {
-            document.querySelector('.input-delete').setAttribute('id', 'delete' + i);
+        function addClickListener(itemName: string, this_: any) {
+            let button: Element;
+            let object: number[];
+            switch (itemName) {
+                case 'button':
+                    button = document.querySelector('.button-delete');
+                    object = this_.Buttons;
+                    break;
+                case 'input':
+                    button = document.querySelector('.input-delete');
+                    object = this_.Inputs;
+                    break;
+                default: break;
+            }
+            button.addEventListener('click', (event) => {
+                let id = event.srcElement.attributes.getNamedItem('id').value;
+                let index = id.substring(id.length - 1, id.length);
+                object.splice(parseInt(index, 0), 1);
+                this_.cdr.detectChanges();
+            });
+        }
+
+        function updateId(itemName: string, i: string) {
+            let button: Element;
+            switch (itemName) {
+                case 'button':
+                    button = document.querySelector('.button-delete');
+                    break;
+                case 'input':
+                    button = document.querySelector('.input-delete');
+                    break;
+                default: break;
+            }
+            button.setAttribute('id', 'delete' + i);
         }
 
         function dragMoveListener(event: Interact.InteractEvent) {

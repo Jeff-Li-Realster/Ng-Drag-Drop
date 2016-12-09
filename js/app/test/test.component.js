@@ -20,15 +20,14 @@ var TestComponent = (function () {
     }
     TestComponent.prototype.ngOnInit = function () {
         var _this = this;
-        document.querySelector('#drag-0').childNodes[1].addEventListener('click', function () {
+        document.querySelector('#new-button').addEventListener('click', function () {
             _this.Buttons.push(1);
             _this.cdr.detectChanges();
         });
-        document.querySelector('#drag-0').childNodes[3].addEventListener('click', function () {
+        document.querySelector('#new-input').addEventListener('click', function () {
             _this.Inputs.push(1);
             _this.cdr.detectChanges();
         });
-        // console.log(document.querySelector('#drag-0').childNodes);
         interact('.draggable-copy')
             .draggable({
             inertia: true,
@@ -43,36 +42,9 @@ var TestComponent = (function () {
                 var target = event.target;
                 var x = parseInt(target.getAttribute('data-x'), 0);
                 var y = parseInt(target.getAttribute('data-y'), 0);
-                var i = target.getAttribute('id');
                 documentEl.textContent = 'x: ' + x + 'px; y: ' + y + 'px;';
-                if (target.getAttribute('class').indexOf('button-default') > -1) {
-                    if (!document.querySelector('.button-delete')) {
-                        _this.isButton = true;
-                        _this.isInput = false;
-                        _this.cdr.detectChanges();
-                        document.querySelector('.button-delete').addEventListener('click', function (event) {
-                            var id = event.srcElement.attributes.getNamedItem('id').value;
-                            var index = id.substring(id.length - 1, id.length);
-                            _this.Buttons.splice(parseInt(index, 0), 1);
-                            _this.cdr.detectChanges();
-                        });
-                    }
-                    updateButtonId(i);
-                }
-                if (target.getAttribute('class').indexOf('input-default') > -1) {
-                    if (!document.querySelector('.input-delete')) {
-                        _this.isInput = true;
-                        _this.isButton = false;
-                        _this.cdr.detectChanges();
-                        document.querySelector('.input-delete').addEventListener('click', function (event) {
-                            var id = event.srcElement.attributes.getNamedItem('id').value;
-                            var index = id.substring(id.length - 1, id.length);
-                            _this.Inputs.splice(parseInt(index, 0), 1);
-                            _this.cdr.detectChanges();
-                        });
-                    }
-                    updateInputId(i);
-                }
+                var this_ = _this;
+                addDeleteButton(target, this_);
             }
         })
             .resizable({
@@ -91,12 +63,72 @@ var TestComponent = (function () {
                 'translate(' + x + 'px,' + y + 'px)';
             target.setAttribute('data-x', x);
             target.setAttribute('data-y', y);
+            var this_ = _this;
+            addDeleteButton(target, this_);
+        })
+            .on('click', function (event) {
+            var target = event.target;
+            var this_ = _this;
+            addDeleteButton(target, this_);
         });
-        function updateButtonId(i) {
-            document.querySelector('.button-delete').setAttribute('id', 'delete' + i);
+        function addDeleteButton(target, this_) {
+            var i = target.getAttribute('id');
+            var targetClass = target.getAttribute('class').split(' ')[0];
+            switch (targetClass) {
+                case 'button-default':
+                    if (!document.querySelector('.button-delete')) {
+                        this_.isButton = true;
+                        this_.isInput = false;
+                        this_.cdr.detectChanges();
+                        addClickListener('button', this_);
+                    }
+                    updateId('button', i);
+                    break;
+                case 'input-default':
+                    if (!document.querySelector('.input-delete')) {
+                        this_.isInput = true;
+                        this_.isButton = false;
+                        this_.cdr.detectChanges();
+                        addClickListener('input', this_);
+                    }
+                    updateId('input', i);
+                    break;
+                default: break;
+            }
         }
-        function updateInputId(i) {
-            document.querySelector('.input-delete').setAttribute('id', 'delete' + i);
+        function addClickListener(itemName, this_) {
+            var button;
+            var object;
+            switch (itemName) {
+                case 'button':
+                    button = document.querySelector('.button-delete');
+                    object = this_.Buttons;
+                    break;
+                case 'input':
+                    button = document.querySelector('.input-delete');
+                    object = this_.Inputs;
+                    break;
+                default: break;
+            }
+            button.addEventListener('click', function (event) {
+                var id = event.srcElement.attributes.getNamedItem('id').value;
+                var index = id.substring(id.length - 1, id.length);
+                object.splice(parseInt(index, 0), 1);
+                this_.cdr.detectChanges();
+            });
+        }
+        function updateId(itemName, i) {
+            var button;
+            switch (itemName) {
+                case 'button':
+                    button = document.querySelector('.button-delete');
+                    break;
+                case 'input':
+                    button = document.querySelector('.input-delete');
+                    break;
+                default: break;
+            }
+            button.setAttribute('id', 'delete' + i);
         }
         function dragMoveListener(event) {
             var target = event.target;
